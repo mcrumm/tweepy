@@ -219,10 +219,10 @@ class API(object):
             f.seek(0)
 
         if mime in IMAGE_MIMETYPES and size < self.max_size_standard:
-            return self.image_upload(filename, f=f, *args, **kwargs)
+            return self.image_upload(filename, file=f, *args, **kwargs)
 
         elif mime in CHUNKED_MIMETYPES:
-            return self.upload_chunked(filename, f=f, *args, **kwargs)
+            return self.upload_chunked(filename, file=f, *args, **kwargs)
 
         else:
             raise TweepError("Can't upload media with mime type %s" % mime)
